@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import authRoute from './api/authRoute';
 import userRoute from './api/userRoute';
 
 const router = Router();
@@ -15,4 +16,6 @@ router.get('/', async (req, res, next) => {
 
 // User Routes
 router.use('/user', userRoute);
+// Auth routes
+router.use('/auth', authRoute);
 export default router;

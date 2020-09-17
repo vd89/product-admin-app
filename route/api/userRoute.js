@@ -1,9 +1,9 @@
 import { Router } from 'express';
-import inputValidators from '../../helper/inputValidators';
+import { registerUser } from '../../controller/userController';
+import { registerRules, validate } from '../../helper/inputValidators';
 
-const { registerRules, validate } = inputValidators;
 
-const userRoute = Router();
+const userRoute = new Router();
 
 /* @route   GET api/user
    @desc    Test Route
@@ -21,7 +21,5 @@ userRoute.get('/', async (req, res, next) => {
    @desc    Register User 
    @access  Public
  */
-userRoute.post('/', registerRules(), validate, (req, res) => {
-  return res.status(200).json({ msg: 'success' });
-});
+userRoute.post('/', registerRules(), validate, registerUser);
 export default userRoute;
