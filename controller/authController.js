@@ -25,3 +25,12 @@ export const login = async (req, res, next) => {
     next(err);
   }
 };
+export const getUserData = async (req, res, next) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password -createdAt -updatedAt');
+    return res.status(400).json({ name, status: 'Success', user });
+  } catch (err) {
+    next(err);
+  }
+};
+
