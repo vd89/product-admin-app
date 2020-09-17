@@ -4,6 +4,8 @@ import { createServer } from 'http';
 import morgan from 'morgan';
 import cors from 'cors';
 import dbController from './controller/dbController';
+import { errorHandler, headerFunction, ignoreFavicon, notFound } from './middleware/index';
+import router from './route';
 
 const app = Express();
 const server = createServer(app);
@@ -13,6 +15,14 @@ app.use(Express.json());
 app.use(morgan('common'));
 app.use(helmet());
 app.use(cors());
+
+// Route 
+app.use('/api',router)
+
+// Error Handler and header 
+app.use(headerFunction);
+app.use(notFound);
+app.use(errorHandler)
 
 // Db connection
 dbController();
