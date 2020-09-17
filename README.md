@@ -23,3 +23,39 @@
 4. fetch all products and display in table with pagination, product can be filtered by status(active, inactive), and category
 5. edit product details and attribute details, also product can be set to inactive and active as well as product attributes too
 6. clicking on product row on product table can lead to product details page where full product details with their category name and all product attributes in card design with their multiple images and name and price should display
+
+---
+
+## Quick Start 🚀
+
+### Add a default.json file in config folder with the following
+
+``` bash
+
+{
+  "mongoURI": "<your_mongoDB_Atlas_uri_with_credentials>",
+  "jwtSecret": "secret",
+}
+
+```
+
+### Install server dependencies
+
+```bash
+npm install
+```
+
+### Install client dependencies
+
+```bash
+cd client
+npm install
+```
+
+### Run both Express & React from root
+
+```bash
+npm run dev
+```
+
+heck in browser on [http://localhost:5000/](http://localhost:5000/)

@@ -1,0 +1,4 @@
+{
+  "mongoURI": "<mongodbURL or local Mongodb server connection >",
+  "jwtSecret": "<provide any secret key >"
+}
