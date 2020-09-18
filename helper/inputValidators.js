@@ -10,6 +10,19 @@ export const registerRules = () => {
 export const loginRules = () => {
   return [body('email', 'Email valid email address').isEmail(), body('password', 'Password is required').exists()];
 };
+export const categoryRules = () => {
+  return [body('name', 'Name is required').not().isEmpty()];
+};
+export const productRules = () => {
+  return [
+    body('name', 'Name is required').not().isEmpty(),
+    body('description', 'Description is required').not().isEmpty(),
+    body('category', 'Category is required').not().isEmpty,
+  ];
+};
+export const variant = () => {
+  return [body('name', 'Name is required').not().isEmpty(), body('price', 'Price is required').not().isEmpty()];
+};
 export const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
