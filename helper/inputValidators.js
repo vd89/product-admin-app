@@ -27,6 +27,14 @@ export const variantRules = () => {
     body('price', 'Price is required').isNumeric(),
   ];
 };
+export const editProductRules = () => {
+  return [
+    param('productID').isMongoId(),
+    body('name', 'Name is required').notEmpty(),
+    body('description', 'Description is required').notEmpty(),
+    body('category', 'Category is required').isMongoId().notEmpty(),
+  ];
+};
 export const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
