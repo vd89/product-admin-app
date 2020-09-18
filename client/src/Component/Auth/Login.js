@@ -1,23 +1,48 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import AlertContext from '../../context/alert/AlertContext';
+import AuthContext from '../../context/auth/AuthContext';
+import Alert from '../Layout/Alert';
 
-const Login = () => {
+const Login = (props) => {
   const [formData, setFormData] = useState({
     email: '',
     password: '',
   });
+  const { loginUser, clearErrors, error, isAuthenticated ,user} = useContext(AuthContext);
+  const { setAlert } = useContext(AlertContext);
+
   const { email, password } = formData;
+  
   const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formData);
+    if (email === '' || password === '') {
+      setAlert('Email and password are required',  'danger');
+    } else {
+      loginUser(formData);
+    }
   };
+  
+    useEffect(() => {
+      if (user && isAuthenticated) {
+        props.history.push('/dashboard')
+       
+      };    
+      if (error) {
+        setAlert(error, 'danger');
+        clearErrors()
+      }
+    }, [clearErrors, error, isAuthenticated, props.history, setAlert, user])
+    
+  
   return (
     <section className='container'>
       <h1 className='large text-primary'>Sign In</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Sign into Your Account
       </p>
+      <Alert/>
       <form className='form' onSubmit={onSubmitHandler}>
         <div className='form-group'>
           <input
