@@ -6,11 +6,7 @@ const productSchema = new Schema(
     description: { type: String, trim: true, required: true },
     status: { type: Boolean, default: false },
     category: { type: Schema.Types.ObjectId, ref: 'category', required: true },
-    images: [
-      {
-        type: String,
-      },
-    ],
+    images: [{ type: String }],
     variant: [
       {
         name: { type: String, trim: true, required: true },

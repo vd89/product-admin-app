@@ -1,4 +1,4 @@
-import { body, validationResult } from 'express-validator';
+import { body, param, validationResult } from 'express-validator';
 
 
 export const registerRules = () => {
@@ -11,17 +11,21 @@ export const loginRules = () => {
   return [body('email', 'Email valid email address').isEmail(), body('password', 'Password is required').exists()];
 };
 export const categoryRules = () => {
-  return [body('name', 'Name is required').not().isEmpty()];
+  return [body('name', 'Name is required').notEmpty()];
 };
 export const productRules = () => {
   return [
-    body('name', 'Name is required').not().isEmpty(),
-    body('description', 'Description is required').not().isEmpty(),
-    body('category', 'Category is required').not().isEmpty,
+    body('name', 'Name is required').notEmpty(),
+    body('description', 'Description is required').notEmpty(),
+    body('category', 'Category is required').notEmpty(),
   ];
 };
-export const variant = () => {
-  return [body('name', 'Name is required').not().isEmpty(), body('price', 'Price is required').not().isEmpty()];
+export const variantRules = () => {
+  return [
+    param('productID').isMongoId(),
+    body('name', 'Name is required').notEmpty(),
+    body('price', 'Price is required').isNumeric(),
+  ];
 };
 export const validate = (req, res, next) => {
   const errors = validationResult(req);

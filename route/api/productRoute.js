@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import { createCategory } from '../../controller/categoryController';
-import { createProduct } from '../../controller/productController';
-import { categoryRules, productRules, validate } from '../../helper/inputValidators';
+import { createCategory, getAllCategory } from '../../controller/categoryController';
+import { addVariant, createProduct, getAllProduct } from '../../controller/productController';
+import { categoryRules, productRules, validate, variantRules } from '../../helper/inputValidators';
 import authMidd from '../../middleware/authMidd';
 
 const productRoute = new Router();
@@ -29,5 +29,25 @@ productRoute.post('/', authMidd, productRules(), validate, createProduct);
    @access  Private
 */
 productRoute.post('/category', authMidd, categoryRules(), validate, createCategory);
+
+/* @route   GET api/product/category
+   @desc    GET product category
+   @access  Private
+*/
+productRoute.get('/category', authMidd, getAllCategory);
+
+/* @route   GET api/product
+   @desc    GET All Products 
+   @access  Private
+*/
+productRoute.get('/', authMidd, getAllProduct);
+
+
+/* @route   PUT api/product/:productID
+   @desc    Add Variants
+   @access  Private
+*/
+productRoute.put('/:productID', authMidd,variantRules(),validate, addVariant);
+
 
 export default productRoute;

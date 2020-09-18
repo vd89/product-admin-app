@@ -6,7 +6,7 @@ export default async function authMidd(req, res, next) {
   try {
     const decoded = await decodeToken(token);
     req.user = decoded.user;
-    next();;
+    next();
   } catch (error) {
     next(error);
   }
