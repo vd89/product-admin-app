@@ -9,9 +9,8 @@ export const createProduct = async (req, res, next) => {
       name,
       description,
       category,
-      status,      
+      status,
     });
-
     await product.save();
     return res.status(200).json({ nameMain, status: 'Success', product });
   } catch (err) {

@@ -23,7 +23,7 @@ export const productRules = () => {
 export const variantRules = () => {
   return [
     param('productID').isMongoId(),
-    body('name', 'Name is required').notEmpty(),
+    body('variantName', 'Name is required').notEmpty(),
     body('price', 'Price is required').isNumeric(),
   ];
 };

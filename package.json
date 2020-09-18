@@ -27,7 +27,9 @@
     "nodemon": "^2.0.4"
   },
   "scripts": {
-    "dev":"nodemon --exec babel-node .",
-    "start":"node --exec babel-node ."
+    "server":"nodemon --exec babel-node .",
+    "client":"npm start --prefix client",
+    "start":"node --exec babel-node .",
+    "dev":"concurrently \"npm run server\" \"npm run client\""
   }
 }
