@@ -6,6 +6,7 @@ import {
   CLEAR_ERRORS,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  LOGOUT,
   REGISTER_FAIL,
   REGISTER_SUCCESS,
   USER_LOADED,
@@ -83,6 +84,9 @@ const AuthState = (props) => {
       });
     }
   };
+  const logout = () => {
+    dispatch({ type: LOGOUT });
+  };
 
   return (
     <AuthContext.Provider
@@ -96,6 +100,7 @@ const AuthState = (props) => {
         loginUser,
         clearErrors,
         loadUser,
+        logout,
       }}>
       {props.children}
     </AuthContext.Provider>

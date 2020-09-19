@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import AlertContext from '../../context/alert/AlertContext';
 import AuthContext from '../../context/auth/AuthContext';
 import Alert from '../Layout/Alert';
@@ -15,16 +15,15 @@ const Register = (props) => {
   });
 
   useEffect(() => {
-    // if (isAuthenticated) {
-    //   props.history.push('/dashboard');
-    // }
+    if (isAuthenticated) {
+      props.history.push('/dashboard');
+    }
     if (error) {
       setAlert(error, 'danger');
       clearErrors();
     }
-  }, [clearErrors, error, setAlert]);
+  }, [clearErrors, error, props.history,  isAuthenticated, setAlert]);
 
-  
   const { email, password, password2, mobileNumber } = formData;
   const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
   const onSubmitHandler = (e) => {
@@ -35,9 +34,7 @@ const Register = (props) => {
       registerUser(formData);
     }
   };
-  if (isAuthenticated) {
-    return <Redirect to='/dashboard' />;
-  }
+
   return (
     <section className='container'>
       <h1 className='large text-primary'>Sign Up</h1>
