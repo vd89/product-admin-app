@@ -42,6 +42,7 @@ const AuthState = (props) => {
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
+      // dispatch(loadUser());
     } catch (err) {
       dispatch({
         type: REGISTER_FAIL,
@@ -57,6 +58,7 @@ const AuthState = (props) => {
         type: LOGIN_SUCCESS,
         payload: res.data,
       });
+      loadUser();
     } catch (err) {
       dispatch({
         type: LOGIN_FAIL,
@@ -78,10 +80,10 @@ const AuthState = (props) => {
     } catch (err) {
       dispatch({
         type: AUTH_ERROR,
-        payload: err.response.data.msg,
       });
     }
   };
+
   return (
     <AuthContext.Provider
       value={{

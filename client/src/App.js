@@ -6,9 +6,9 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Login from './Component/Auth/Login';
 import Register from './Component/Auth/Register';
 import AlertState from './context/alert/AlertState';
+import AuthState from './context/auth/AuthState';
 import PrivateRoute from './Component/PrivateRoute';
 import Dashboard from './Component/Dashboard';
-import AuthState from './context/auth/AuthState';
 
 function App() {
   return (

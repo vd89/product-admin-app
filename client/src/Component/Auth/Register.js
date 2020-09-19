@@ -15,11 +15,14 @@ const Register = (props) => {
   });
 
   useEffect(() => {
+    // if (isAuthenticated) {
+    //   props.history.push('/dashboard');
+    // }
     if (error) {
       setAlert(error, 'danger');
       clearErrors();
     }
-  }, [props.history, error, setAlert, clearErrors]);
+  }, [clearErrors, error, setAlert]);
 
   
   const { email, password, password2, mobileNumber } = formData;

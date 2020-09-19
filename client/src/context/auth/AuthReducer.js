@@ -11,7 +11,8 @@ import {
 
 export default (state, action) => {
   const { type, payload } = action;
-  console.log(' 👽', action);
+  // console.log(' 🔥', state);
+  // console.log(' 👽', action.type, payload);
   switch (type) {
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:

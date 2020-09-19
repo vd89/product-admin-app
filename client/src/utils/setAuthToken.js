@@ -1,6 +1,7 @@
-const { default: Axios } = require('axios');
+const Axios = require('axios');
 
 const setAuthToken = (token) => {
+  // console.log('token ==> ', token);
   if (token) {
     Axios.defaults.headers.common['x-auth-token'] = token;
   } else {

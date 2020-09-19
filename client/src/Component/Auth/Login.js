@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import AlertContext from '../../context/alert/AlertContext';
 import AuthContext from '../../context/auth/AuthContext';
 import Alert from '../Layout/Alert';
@@ -9,40 +9,40 @@ const Login = (props) => {
     email: '',
     password: '',
   });
-  const { loginUser, clearErrors, error, isAuthenticated ,user} = useContext(AuthContext);
+  const { loginUser, isAuthenticated, user, error, clearErrors } = useContext(AuthContext);
   const { setAlert } = useContext(AlertContext);
 
   const { email, password } = formData;
-  
+
+  useEffect(() => {
+    if (isAuthenticated) {
+       props.history.push('/dashboard');
+     }
+
+    if (error) {
+      setAlert(error, 'danger');
+      clearErrors();
+    }
+  }, [isAuthenticated, error, props.history, user, setAlert, clearErrors]);
+
   const onChangeHandler = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+  
   const onSubmitHandler = (e) => {
     e.preventDefault();
     if (email === '' || password === '') {
-      setAlert('Email and password are required',  'danger');
+      setAlert('Email and password are required', 'danger');
     } else {
       loginUser(formData);
     }
   };
-  
-    useEffect(() => {
-      if (user && isAuthenticated) {
-        props.history.push('/dashboard')
-       
-      };    
-      if (error) {
-        setAlert(error, 'danger');
-        clearErrors()
-      }
-    }, [clearErrors, error, isAuthenticated, props.history, setAlert, user])
-    
-  
+
   return (
     <section className='container'>
       <h1 className='large text-primary'>Sign In</h1>
       <p className='lead'>
         <i className='fas fa-user'></i> Sign into Your Account
       </p>
-      <Alert/>
+      <Alert />
       <form className='form' onSubmit={onSubmitHandler}>
         <div className='form-group'>
           <input
@@ -64,6 +64,6 @@ const Login = (props) => {
       </p>
     </section>
   );
-};
+};;
 
 export default Login;
