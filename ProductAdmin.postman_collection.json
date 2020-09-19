@@ -1,0 +1,297 @@
+{
+	"info": {
+		"_postman_id": "fa5f8f29-4442-4290-aa57-779a6b570042",
+		"name": "ProductAdmin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register User ",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"email\":\"james@smith.com\",\n\"password\":\"123456\",\n\"mobileNumber\":\"+911234567891\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{User}}",
+							"host": [
+								"{{User}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Test Route",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Auth}}/test",
+							"host": [
+								"{{Auth}}"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Route",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"james@smith.com\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Auth}}",
+							"host": [
+								"{{Auth}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user Data ",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2MzhmZWQyNjIzZGZiMmU2YmRjMjNiIn0sImlhdCI6MTYwMDM2MzU3MH0.YluwZB1y3a1TBL9bqjySlbCY0Mv34FS1sPo73s9lJu0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Auth}}",
+							"host": [
+								"{{Auth}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Ptoduct Test ",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{Product}}/test",
+							"host": [
+								"{{Product}}"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2MzhmZWQyNjIzZGZiMmU2YmRjMjNiIn0sImlhdCI6MTYwMDQxOTU5NSwiZXhwIjoxNjAwNDU1NTk1fQ.setsDo75LnZtmoESDUl-hipp8UmxTToCrFTioJ8_Iw0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Iphone\",\n    \"description\": \"This is the iPhone7\",\n    \"category\": \"5f649d04ad4c3e7b09dcbb73\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Product}}",
+							"host": [
+								"{{Product}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Category",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2MzhmZWQyNjIzZGZiMmU2YmRjMjNiIn0sImlhdCI6MTYwMDQxOTU5NSwiZXhwIjoxNjAwNDU1NTk1fQ.setsDo75LnZtmoESDUl-hipp8UmxTToCrFTioJ8_Iw0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Books\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Product}}/category",
+							"host": [
+								"{{Product}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2MzhmZWQyNjIzZGZiMmU2YmRjMjNiIn0sImlhdCI6MTYwMDQxOTU5NSwiZXhwIjoxNjAwNDU1NTk1fQ.setsDo75LnZtmoESDUl-hipp8UmxTToCrFTioJ8_Iw0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Product}}/category",
+							"host": [
+								"{{Product}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllProduct",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2MzhmZWQyNjIzZGZiMmU2YmRjMjNiIn0sImlhdCI6MTYwMDQxOTU5NSwiZXhwIjoxNjAwNDU1NTk1fQ.setsDo75LnZtmoESDUl-hipp8UmxTToCrFTioJ8_Iw0",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{Product}}",
+							"host": [
+								"{{Product}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add different Varient",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2MzhmZWQyNjIzZGZiMmU2YmRjMjNiIn0sImlhdCI6MTYwMDQxOTU5NSwiZXhwIjoxNjAwNDU1NTk1fQ.setsDo75LnZtmoESDUl-hipp8UmxTToCrFTioJ8_Iw0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"variantName\": \"Black\",\n    \"price\": \"154554\",\n    \"img1\":\"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.amazon.in%2FApple-iPhone-Rose-Gold-32GB%2Fdp%2FB01LZWIOS4&psig=AOvVaw0yz6vRIaT4K2fqS7loAaYi&ust=1600518612805000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDrps7a8usCFQAAAAAdAAAAABAD\",\n    \"img2\":\"https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.currys.co.uk%2Fgbuk%2Fphones-broadband-and-sat-nav%2Fmobile-phones-and-accessories%2Fmobile-phones%2Fapple-iphone-7-rose-gold-32-gb-10151565-pdt.html&psig=AOvVaw0yz6vRIaT4K2fqS7loAaYi&ust=1600518612805000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCPDrps7a8usCFQAAAAAdAAAAABAI\"\n    \n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Product}}/5f64c618752b1aa0f8d0aad8",
+							"host": [
+								"{{Product}}"
+							],
+							"path": [
+								"5f64c618752b1aa0f8d0aad8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Product",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-auth-token",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWY2MzhmZWQyNjIzZGZiMmU2YmRjMjNiIn0sImlhdCI6MTYwMDQxOTU5NSwiZXhwIjoxNjAwNDU1NTk1fQ.setsDo75LnZtmoESDUl-hipp8UmxTToCrFTioJ8_Iw0",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"MacBook PRo\",\n    \"description\":\"this is the new laptop\",\n    \"category\":\"5f649cf5ad4c3e7b09dcbb72\",\n    \"variantName\":\"MacBook 128GB\",\n    \"price\":\"85000\",\n    \"img1\":\"https://www.google.com/url?sa=i&url=https%3A%2F%2Fpngio.com%2FPNG%2Fa77266-for-macbook-pro-png.html&psig=AOvVaw3oYmfMlqQ1swPuIXcL0ZT-&ust=1600523578694000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCNi4pY7t8usCFQAAAAAdAAAAABAD\",\n    \"img2\":\"https://ivenus.in/wp-content/themes/ivenus/assets/images/macbook-pro/macbook-pro-16-header.jpg\",\n    \"img3\":\"https://static.bhphoto.com/images/images2500x2500/1573663014_1520696.jpg\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{Product}}/edit/5f64c618752b1aa0f8d0aad8",
+							"host": [
+								"{{Product}}"
+							],
+							"path": [
+								"edit",
+								"5f64c618752b1aa0f8d0aad8"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

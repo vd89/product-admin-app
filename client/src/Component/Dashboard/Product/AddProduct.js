@@ -5,11 +5,11 @@ import AddVariant from './AddVariant';
 const AddProduct = () => {
   return (
     <section className='container'>
+      <AddCategory />
       <h1 className='large text-primary'>Add An Product</h1>
       <p className='lead'>
         <i className='fas fa-code-branch'></i> Add a new product and with the detail and description of the product
       </p>
-      <AddCategory />
       <small>* = required field</small>
       <form className='form'>
         <div className='form-group'>
@@ -31,7 +31,6 @@ const AddProduct = () => {
           Go Back
         </a>
       </form>
-      <AddVariant />
     </section>
   );
 };
